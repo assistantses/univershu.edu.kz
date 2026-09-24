@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+  }
+}
+
+/* Accessibility panel: font size + contrast, toggled from the header/footer widget */
+html.a11y-font-md { font-size: 112.5%; }
+html.a11y-font-lg { font-size: 125%; }
+html.a11y-contrast-dark {
+  filter: invert(1) hue-rotate(180deg);
+}
+html.a11y-contrast-dark img,
+html.a11y-contrast-dark video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+@layer components {
+  .container-c {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm transition;
+  }
+  /* Sharp-cornered navy button — the site's most-repeated CTA ("Показать все", "Подробнее") */
+  .btn-action {
+    @apply btn rounded-none bg-action font-bold text-white hover:bg-action-dark;
+  }
+  /* Bright rounded CTA — used sparingly (admissions band, hero) */
+  .btn-teal {
+    @apply btn rounded-md bg-teal font-bold uppercase tracking-wide text-white hover:bg-teal-dark;
+  }
+  .btn-gold {
+    @apply btn rounded-md bg-gold font-bold uppercase tracking-wide text-ink hover:bg-gold-dark hover:text-white;
+  }
+  .btn-brand {
+    @apply btn rounded-none bg-brand font-bold text-white hover:bg-brand-dark;
+  }
+  .btn-outline {
+    @apply btn rounded-none border border-ink/20 font-semibold text-ink hover:bg-black/5;
+  }
+  .section-title {
+    @apply text-2xl font-extrabold text-ink sm:text-3xl;
+  }
+  .kicker {
+    @apply inline-block text-xs font-bold uppercase tracking-wider text-brand;
+  }
+}
+
+@keyframes drop-in {
+  0% { opacity: 0; transform: translateY(-28px); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-side {
+  from { opacity: 0; transform: translateX(-48px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@layer utilities {
+  .drop-letter {
+    display: inline-block;
+    animation: drop-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .rise-in {
+    animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .slide-in-side {
+    animation: slide-in-side 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}

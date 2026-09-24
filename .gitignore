@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+.idea/
+.vscode/
+
+# Real reference-site photos (real people, another university's branding) — not for publishing
+public/dsc_2908__6192x3141.jpg
+public/dscf9130__3120x1760.jpg
