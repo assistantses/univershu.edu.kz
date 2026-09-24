@@ -13,8 +13,13 @@ const sevColor = {
   SCANNER: 'bg-yellow-100 text-yellow-700',
 }
 
+// В деве Vite проксирует /api на localhost:8080 (см. vite.config.js).
+// В проде (фронтенд и бэкенд — отдельные Railway-сервисы) нужен полный URL бэкенда,
+// заданный при сборке через переменную окружения VITE_API_URL.
+const API_BASE = import.meta.env.VITE_API_URL || ''
+
 function api(path, auth) {
-  return fetch(path, { headers: { Authorization: 'Basic ' + auth } })
+  return fetch(API_BASE + path, { headers: { Authorization: 'Basic ' + auth } })
 }
 
 export default function Admin() {

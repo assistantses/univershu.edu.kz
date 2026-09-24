@@ -15,10 +15,10 @@ export default defineConfig({
       },
     },
   },
-  build: {
-    // Output straight into the Spring Boot static folder so the
-    // backend can serve the whole app in production (single origin).
-    outDir: '../backend/src/main/resources/static',
-    emptyOutDir: true,
+  preview: {
+    port: 4173,
+    // Railway assigns the port via $PORT and proxies from outside;
+    // allow any host so the preview server doesn't reject the request.
+    allowedHosts: true,
   },
 })
