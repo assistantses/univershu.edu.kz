@@ -8,11 +8,11 @@
 
 export const images = {
   // Главная — фон hero-слайдера (2 слайда, сменяются автоматически)
-  heroSlide1: 'https://picsum.photos/seed/aqu-campus/1600/700',
-  heroSlide2: 'https://picsum.photos/seed/aqu-campus2/1600/700',
+  heroSlide1: '\dsc_2908__6192x3141.jpg',
+  heroSlide2: '\dscf9130__3120x1760.jpg',
 
   // Главная — сертификат QS Stars (увеличивается по клику)
-  qsCertificate: 'https://picsum.photos/seed/aqu-cert/900/1200',
+  qsCertificate: '\shymkentuniversityqsstarscertificate2026-1_page-0001__2656x3683__2656x3683.jpg',
 
   // Главная — фото кампуса в блоке "Почему мы"
   whyUsCampus: 'https://picsum.photos/seed/aqu-why/800/560',
@@ -29,12 +29,12 @@ export const images = {
 
   // Новости (главная + /news + /news/:id) — по id новости
   news: {
-    'graduates-2026': 'https://picsum.photos/seed/aqu-grad/800/500', // Выпускники — 2026
-    'vacancy-fair-2026': 'https://picsum.photos/seed/aqu-fair/800/500', // Ярмарка вакансий
-    'regional-vacancies': 'https://picsum.photos/seed/aqu-region/800/500', // Региональная ярмарка
-    'qs-stars-2026': 'https://picsum.photos/seed/aqu-qs/800/500', // QS Stars
-    'summer-school-2026': 'https://picsum.photos/seed/aqu-summer/800/500', // Летняя школа
-    'international-agreement-2026': 'https://picsum.photos/seed/aqu-agreement/800/500', // Международное соглашение
+    'graduates-2026': '\news1.jpeg', // Выпускники — 2026
+    'vacancy-fair-2026': '\news2.jpeg', // Ярмарка вакансий
+    'regional-vacancies': '\news3.jpeg', // Региональная ярмарка
+    'qs-stars-2026': '\news4.jpeg', // QS Stars
+    'summer-school-2026': '\news5.jpeg', // Летняя школа
+    'international-agreement-2026': '\news6.jpeg', // Международное соглашение
   },
 
   // Раздел "Спорт" на главной — по id
