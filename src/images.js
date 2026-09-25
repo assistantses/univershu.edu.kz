@@ -8,11 +8,11 @@
 
 export const images = {
   // Главная — фон hero-слайдера (2 слайда, сменяются автоматически)
-  heroSlide1: '\dsc_2908__6192x3141.jpg',
-  heroSlide2: '\dscf9130__3120x1760.jpg',
+  heroSlide1: '/dsc_2908__6192x3141.jpg',
+  heroSlide2: '/dscf9130__3120x1760.jpg',
 
   // Главная — сертификат QS Stars (увеличивается по клику)
-  qsCertificate: '\shymkentuniversityqsstarscertificate2026-1_page-0001__2656x3683__2656x3683.jpg',
+  qsCertificate: '/shymkentuniversityqsstarscertificate2026-1_page-0001__2656x3683__2656x3683.jpg',
 
   // Главная — фото кампуса в блоке "Почему мы"
   whyUsCampus: 'https://picsum.photos/seed/aqu-why/800/560',
