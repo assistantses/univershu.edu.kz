@@ -57,6 +57,6 @@ export const images = {
   // Логотипы партнёров на главной — 11 штук
   partnerLogos: ['/p1.png', '/p2.png', '/p3.png', '/p4.png', '/p5.png', '/p6.png', '/p7.png', '/p8.png', '/p9.png', '/p10.png', '/p11.png'],
 
-  // Галерея "Наши достижения" на главной — 8 штук, i = 1..8
-  achievementPhoto: (i) => `https://picsum.photos/seed/aqu-achieve${i}/400/400`,
+  // Галерея "Наши достижения" на главной — слайдер по одному изображению
+  achievements: ['/a1.jpg', '/a2.jpg'],
 }

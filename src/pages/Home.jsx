@@ -5,6 +5,7 @@ import { brand } from '../brand.js'
 import { news, announcements, sports, features, services, partners, achievements, localize } from '../data/content.js'
 import { ServiceIcon } from '../components/Icons.jsx'
 import Carousel from '../components/Carousel.jsx'
+import ImageSlideshow from '../components/ImageSlideshow.jsx'
 import { images } from '../images.js'
 
 const heroImages = [images.heroSlide1, images.heroSlide2]
@@ -252,13 +253,7 @@ export default function Home() {
       <section className="bg-white py-16">
         <div className="container-c">
           <h2 className="section-title mb-10 text-center">{t('home.achievementsTitle')}</h2>
-          <Carousel prevLabel={t('home.prevSlide')} nextLabel={t('home.nextSlide')}>
-            {achievements.map((a) => (
-              <div key={a.id} className="aspect-square w-64 shrink-0 overflow-hidden">
-                <img src={a.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 hover:scale-105" />
-              </div>
-            ))}
-          </Carousel>
+          <ImageSlideshow images={achievements} prevLabel={t('home.prevSlide')} nextLabel={t('home.nextSlide')} />
         </div>
       </section>
 

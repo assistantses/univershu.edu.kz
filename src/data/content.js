@@ -354,7 +354,4 @@ export const partners = images.partnerLogos.map((logo, i) => ({
   logo,
 }))
 
-export const achievements = Array.from({ length: 8 }, (_, i) => ({
-  id: `ach${i + 1}`,
-  image: images.achievementPhoto(i + 1),
-}))
+export const achievements = images.achievements
