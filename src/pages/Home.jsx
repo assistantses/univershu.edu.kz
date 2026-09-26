@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { brand } from '../brand.js'
 import { news, announcements, sports, features, services, partners, achievements, localize } from '../data/content.js'
 import { ServiceIcon } from '../components/Icons.jsx'
+import Carousel from '../components/Carousel.jsx'
 import { images } from '../images.js'
 
 const heroImages = [images.heroSlide1, images.heroSlide2]
@@ -237,13 +238,13 @@ export default function Home() {
       <section className="bg-cream py-16">
         <div className="container-c">
           <h2 className="section-title mb-10 text-center">{t('home.partnersTitle')}</h2>
-          <div className="grid grid-cols-3 gap-px bg-black/5 sm:grid-cols-4 lg:grid-cols-6">
+          <Carousel prevLabel={t('home.prevSlide')} nextLabel={t('home.nextSlide')}>
             {partners.map((p, i) => (
-              <div key={p.id} className="flex items-center justify-center bg-white p-6 grayscale transition hover:grayscale-0">
-                <img src={p.logo} alt={`${t('home.partnerAlt')} ${i + 1}`} className="max-h-10" loading="lazy" />
+              <div key={p.id} className="flex h-24 w-40 shrink-0 items-center justify-center bg-white p-6 grayscale transition hover:grayscale-0">
+                <img src={p.logo} alt={`${t('home.partnerAlt')} ${i + 1}`} className="max-h-12 max-w-full object-contain" loading="lazy" />
               </div>
             ))}
-          </div>
+          </Carousel>
         </div>
       </section>
 
@@ -251,13 +252,13 @@ export default function Home() {
       <section className="bg-white py-16">
         <div className="container-c">
           <h2 className="section-title mb-10 text-center">{t('home.achievementsTitle')}</h2>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <Carousel prevLabel={t('home.prevSlide')} nextLabel={t('home.nextSlide')}>
             {achievements.map((a) => (
-              <div key={a.id} className="aspect-square overflow-hidden">
+              <div key={a.id} className="aspect-square w-64 shrink-0 overflow-hidden">
                 <img src={a.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 hover:scale-105" />
               </div>
             ))}
-          </div>
+          </Carousel>
         </div>
       </section>
 

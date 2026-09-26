@@ -47,15 +47,15 @@ export const images = {
     s6: '/sport6.png', // Волейбол
   },
 
-  // Раздел "Объявления" на главной — по id
+  // Раздел "Объявления" на главной — по id (изображений всего 2, третья карточка переиспользует первое)
   announcements: {
-    a1: 'https://picsum.photos/seed/aqu-ann1/600/400',
-    a2: 'https://picsum.photos/seed/aqu-ann2/600/400',
-    a3: 'https://picsum.photos/seed/aqu-ann3/600/400',
+    a1: '/notific1.jpeg',
+    a2: '/notific2.jpeg',
+    a3: '/notific1.jpeg',
   },
 
-  // Логотипы партнёров на главной — 12 штук, i = 1..12
-  partnerLogo: (i) => `https://picsum.photos/seed/aqu-partner${i}/200/100?grayscale`,
+  // Логотипы партнёров на главной — 11 штук
+  partnerLogos: ['/p1.png', '/p2.png', '/p3.png', '/p4.png', '/p5.png', '/p6.png', '/p7.png', '/p8.png', '/p9.png', '/p10.png', '/p11.png'],
 
   // Галерея "Наши достижения" на главной — 8 штук, i = 1..8
   achievementPhoto: (i) => `https://picsum.photos/seed/aqu-achieve${i}/400/400`,

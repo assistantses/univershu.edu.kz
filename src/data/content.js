@@ -349,9 +349,9 @@ export const services = [
   },
 ]
 
-export const partners = Array.from({ length: 12 }, (_, i) => ({
+export const partners = images.partnerLogos.map((logo, i) => ({
   id: `p${i + 1}`,
-  logo: images.partnerLogo(i + 1),
+  logo,
 }))
 
 export const achievements = Array.from({ length: 8 }, (_, i) => ({
