@@ -207,5 +207,8 @@
     "title": "Page not found",
     "text": "The page may have been moved or deleted.",
     "backHome": "Back to home"
+  },
+  "certificate": {
+    "download": "Download PDF"
   }
 }
