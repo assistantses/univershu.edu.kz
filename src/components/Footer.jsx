@@ -31,14 +31,14 @@ export default function Footer() {
 
         <div>
           <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">{t('footer.directionsTitle')}</h4>
-          <div className="relative flex h-40 items-center justify-center overflow-hidden border border-white/10 bg-white/5">
-            <svg className="absolute inset-0 h-full w-full opacity-20" viewBox="0 0 200 100" preserveAspectRatio="none">
-              <path d="M0 20h200M0 50h200M0 80h200M30 0v100M100 0v100M160 0v100" stroke="white" strokeWidth="1" />
-            </svg>
-            <svg className="relative h-8 w-8 text-teal" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z" />
-            </svg>
-            <p className="absolute bottom-2 left-0 right-0 text-center text-xs text-white/60">{t('common.city')}</p>
+          <div className="h-40 overflow-hidden border border-white/10">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?text=Казахстан%2C%20Шымкент%2C%20проспект%20Жибек%20жолы&z=15"
+              title={t('footer.directionsTitle')}
+              className="h-full w-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </div>
