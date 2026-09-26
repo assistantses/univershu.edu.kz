@@ -33,7 +33,7 @@ export default function Footer() {
           <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">{t('footer.directionsTitle')}</h4>
           <div className="h-40 overflow-hidden border border-white/10">
             <iframe
-              src="https://yandex.ru/map-widget/v1/?text=Казахстан%2C%20Шымкент%2C%20проспект%20Жибек%20жолы&z=15"
+              src="https://yandex.ru/map-widget/v1/?ll=69.699032%2C42.352552&z=17&pt=69.699032%2C42.352552%2Cpm2rdm"
               title={t('footer.directionsTitle')}
               className="h-full w-full"
               loading="lazy"
