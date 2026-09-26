@@ -25,7 +25,10 @@ export default function Carousel({ children, prevLabel = 'Previous', nextLabel =
   const scroll = (dir) => {
     const track = trackRef.current
     if (!track) return
-    animateScrollBy(track, dir * track.clientWidth * 0.6, 1400)
+    // На один элемент за раз: ширина первой карточки + отступ (gap-6 = 24px).
+    const firstItem = track.firstElementChild
+    const step = (firstItem ? firstItem.getBoundingClientRect().width : track.clientWidth * 0.6) + 24
+    animateScrollBy(track, dir * step, 2200)
   }
 
   return (
