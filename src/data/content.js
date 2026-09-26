@@ -19,7 +19,7 @@ export const news = [
       excerpt:
         'Бакалавриат пен магистратура түлектеріне дипломдарды салтанатты түрде табыстау рәсімі өтті. 1 200-ден астам жас маман кәсіби өмірге жолдама алды.',
       body: [
-        'Aqniet University акт залында 2026 жылғы түлектерге диплом табыстаудың салтанатты рәсімі өтті.',
+        'Шымкент университеті акт залында 2026 жылғы түлектерге диплом табыстаудың салтанатты рәсімі өтті.',
         'Ректор түлектерді құттықтап, кәсіби қызметте табыс тіледі. Үздік студенттерге үздіктік дипломдары табысталды.',
         'Биыл университет бакалавриаттың 29 бағыты мен магистратураның 9 бағдарламасы бойынша мамандар шығарды.',
       ],
@@ -30,7 +30,7 @@ export const news = [
       excerpt:
         'Торжественное вручение дипломов выпускникам бакалавриата и магистратуры. Более 1 200 молодых специалистов получили путёвку в профессиональную жизнь.',
       body: [
-        'В актовом зале Aqniet University состоялась торжественная церемония вручения дипломов выпускникам 2026 года.',
+        'В актовом зале Шымкентского университета состоялась торжественная церемония вручения дипломов выпускникам 2026 года.',
         'Ректор поздравил выпускников и пожелал им успехов в профессиональной деятельности. Лучшим студентам были вручены дипломы с отличием.',
         'В этом году университет выпустил специалистов по 29 направлениям бакалавриата и 9 программам магистратуры.',
       ],
@@ -41,7 +41,7 @@ export const news = [
       excerpt:
         'A ceremonial diploma presentation for bachelor\'s and master\'s graduates. Over 1,200 young professionals received their send-off into working life.',
       body: [
-        'A ceremonial diploma presentation for the class of 2026 was held in the Aqniet University assembly hall.',
+        'A ceremonial diploma presentation for the class of 2026 was held in the Shymkent University assembly hall.',
         'The rector congratulated the graduates and wished them success in their professional careers. The top students received diplomas with honors.',
         'This year the university graduated specialists across 29 bachelor\'s tracks and 9 master\'s programs.',
       ],
@@ -124,7 +124,7 @@ export const news = [
       excerpt:
         'Университет негізгі қызмет бағыттары бойынша үш жұлдызбен бағаланған халықаралық QS Stars рейтингін растады.',
       body: [
-        'Aqniet University халықаралық QS Stars бағасын — үш жұлдызды алды.',
+        'Шымкент университеті халықаралық QS Stars бағасын — үш жұлдызды алды.',
         'Баға оқыту сапасын, түлектердің жұмысқа орналасуын және инфрақұрылымның дамуын көрсетеді.',
       ],
     },
@@ -134,7 +134,7 @@ export const news = [
       excerpt:
         'Университет подтвердил международный рейтинг QS Stars с оценкой в три звезды по ключевым направлениям деятельности.',
       body: [
-        'Aqniet University получил международную оценку QS Stars — три звезды.',
+        'Шымкентский университет получил международную оценку QS Stars — три звезды.',
         'Оценка отражает качество преподавания, трудоустройство выпускников и развитие инфраструктуры.',
       ],
     },
@@ -144,7 +144,7 @@ export const news = [
       excerpt:
         'The university confirmed its international QS Stars rating, earning three stars across key performance areas.',
       body: [
-        'Aqniet University received an international QS Stars rating of three stars.',
+        'Shymkent University received an international QS Stars rating of three stars.',
         'The rating reflects teaching quality, graduate employability, and infrastructure development.',
       ],
     },
@@ -159,7 +159,7 @@ export const news = [
       excerpt:
         '200-ден астам оқушы университеттің цифрлық технологиялар мен кәсіпкерлікке арналған жазғы ғылыми мектебіне қатысты.',
       body: [
-        'Aqniet University жазғы мектебі елдің әртүрлі өңірлерінен оқушыларды жинады.',
+        'Шымкент университетінің жазғы мектебі елдің әртүрлі өңірлерінен оқушыларды жинады.',
         'Қатысушылар бағдарламалау, дизайн және кәсіпкерліктің негіздері бойынша курстардан өтті.',
       ],
     },
@@ -169,7 +169,7 @@ export const news = [
       excerpt:
         'Более 200 школьников приняли участие в летней научной школе университета, посвящённой цифровым технологиям и предпринимательству.',
       body: [
-        'Летняя школа Aqniet University собрала школьников из разных регионов страны.',
+        'Летняя школа Шымкентского университета собрала школьников из разных регионов страны.',
         'Участники прошли курсы по программированию, дизайну и основам предпринимательства.',
       ],
     },
@@ -179,7 +179,7 @@ export const news = [
       excerpt:
         'More than 200 school students took part in the university\'s summer science school on digital technology and entrepreneurship.',
       body: [
-        'The Aqniet University summer school brought together school students from across the country.',
+        'The Shymkent University summer school brought together school students from across the country.',
         'Participants completed courses in programming, design, and the basics of entrepreneurship.',
       ],
     },
@@ -194,7 +194,7 @@ export const news = [
       excerpt:
         'Академиялық мобильділік және бірлескен зерттеулер саласында ынтымақтастық туралы меморандумға қол қойылды.',
       body: [
-        'Aqniet University шетелдік жоғары оқу орнымен серіктестік туралы келісім жасады.',
+        'Шымкент университеті шетелдік жоғары оқу орнымен серіктестік туралы келісім жасады.',
         'Құжат студенттер алмасуын және бірлескен ғылыми жобаларды көздейді.',
       ],
     },
@@ -204,7 +204,7 @@ export const news = [
       excerpt:
         'Подписан меморандум о сотрудничестве в области академической мобильности и совместных исследований.',
       body: [
-        'Aqniet University заключил соглашение о партнёрстве с зарубежным вузом.',
+        'Шымкентский университет заключил соглашение о партнёрстве с зарубежным вузом.',
         'Документ предусматривает обмен студентами и совместные научные проекты.',
       ],
     },
@@ -214,7 +214,7 @@ export const news = [
       excerpt:
         'A memorandum of cooperation was signed covering academic mobility and joint research.',
       body: [
-        'Aqniet University signed a partnership agreement with a foreign university.',
+        'Shymkent University signed a partnership agreement with a foreign university.',
         'The document provides for student exchange and joint research projects.',
       ],
     },

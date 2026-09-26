@@ -244,9 +244,9 @@ export const pageContent = {
     en: { p: ['The academic mobility program lets students and faculty study and intern at partner universities.'] },
   },
   mooc: {
-    kk: { p: ['MOOC AqU — барлық мамандықтар студенттеріне қолжетімді университеттің онлайн курстар платформасы.'] },
-    ru: { p: ['MOOC AqU — платформа онлайн-курсов университета, доступная студентам всех направлений подготовки.'] },
-    en: { p: ['MOOC AqU is the university\'s online course platform, available to students across all fields of study.'] },
+    kk: { p: ['MOOC SHU — барлық мамандықтар студенттеріне қолжетімді университеттің онлайн курстар платформасы.'] },
+    ru: { p: ['MOOC SHU — платформа онлайн-курсов университета, доступная студентам всех направлений подготовки.'] },
+    en: { p: ['MOOC SHU is the university\'s online course platform, available to students across all fields of study.'] },
   },
   electives: {
     kk: { p: ['Каталогта студенттерге жеке білім беру траекториясын қалыптастыруға мүмкіндік беретін элективті пәндер тізімі берілген.'] },
@@ -331,9 +331,9 @@ export const pageContent = {
     en: { p: ['The rector\'s blog is an open platform for news, initiatives, and messages from university leadership to students and staff.'] },
   },
   aiAqu: {
-    kk: { p: ['AI-Aqniet University — жасанды интеллект технологияларын білім беруге, ғылымға және студенттік кәсіпкерлікке біріктіруге бағытталған университет бағдарламасы.'] },
-    ru: { p: ['AI-Aqniet University — программа университета по интеграции технологий искусственного интеллекта в образование, науку и студенческое предпринимательство.'] },
-    en: { p: ['AI-Aqniet University is the university\'s program for integrating artificial intelligence technologies into education, research, and student entrepreneurship.'] },
+    kk: { p: ['AI-SANA Shymkent University — жасанды интеллект технологияларын білім беруге, ғылымға және студенттік кәсіпкерлікке біріктіруге бағытталған университет бағдарламасы.'] },
+    ru: { p: ['AI-SANA Shymkent University — программа университета по интеграции технологий искусственного интеллекта в образование, науку и студенческое предпринимательство.'] },
+    en: { p: ['AI-SANA Shymkent University is the university\'s program for integrating artificial intelligence technologies into education, research, and student entrepreneurship.'] },
   },
   sdg: {
     kk: { p: ['Университет БҰҰ-ның Тұрақты даму мақсаттарын қолдайды және олардың қағидаттарын білім беру, ғылыми және әлеуметтік қызметіне енгізеді.'] },

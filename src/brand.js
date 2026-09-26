@@ -1,18 +1,16 @@
 // =====================================================================
-//  BRAND CONFIG — единая точка ребрендинга.
-//  Поменяйте значения здесь + цвета в tailwind.config.js — и весь сайт
-//  сменит название, контакты и т.д. Это ВЫМЫШЛЕННЫЙ вуз-шаблон.
+//  BRAND CONFIG — единая точка настройки бренда сайта.
 //  Переводимые тексты (навигация, лейблы) — в src/i18n/locales/*.json.
 // =====================================================================
 export const brand = {
-  name: 'Aqniet University',
-  nameShort: 'AqU',
-  nameRu: 'Университет Ақниет',
+  name: 'Shymkent University',
+  nameShort: 'SHU',
+  nameRu: 'Шымкентский университет',
   founded: 2001,
   phone: '8 (7252) 55-58-61',
   phoneRaw: '+77252555861',
-  email: 'info@aqniet-university.example',
-  instagram: 'aqniet.university',
+  email: 'shu2050@mail.ru',
+  instagram: 'shymkent.university',
   stats: {
     students: '7 000+',
     bachelor: 29,
