@@ -14,10 +14,18 @@ export default function Certificate() {
       <div className="container-c py-12">
         <div className="mx-auto flex max-w-3xl flex-col gap-6">
           <div className="overflow-hidden rounded-xl border border-brand-100 shadow-card">
-            <iframe src={images.certificates.ser1} title={`${t('certificate.title')} — 1`} className="h-[80vh] w-full" />
+            <iframe
+              src={`${images.certificates.ser1}#toolbar=0&navpanes=0&view=FitH`}
+              title={`${t('certificate.title')} — 1`}
+              className="h-[80vh] w-full"
+            />
           </div>
           <div className="overflow-hidden rounded-xl border border-brand-100 shadow-card">
-            <iframe src={images.certificates.ser2} title={`${t('certificate.title')} — 2`} className="h-[80vh] w-full" />
+            <iframe
+              src={`${images.certificates.ser2}#toolbar=0&navpanes=0&view=FitH`}
+              title={`${t('certificate.title')} — 2`}
+              className="h-[80vh] w-full"
+            />
           </div>
         </div>
         <div className="mt-6 flex justify-center gap-4">
