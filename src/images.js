@@ -29,12 +29,12 @@ export const images = {
 
   // Новости (главная + /news + /news/:id) — по id новости
   news: {
-    'graduates-2026': '\news1.jpeg', // Выпускники — 2026
-    'vacancy-fair-2026': '\news2.jpeg', // Ярмарка вакансий
-    'regional-vacancies': '\news3.jpeg', // Региональная ярмарка
-    'qs-stars-2026': '\news4.jpeg', // QS Stars
-    'summer-school-2026': '\news5.jpeg', // Летняя школа
-    'international-agreement-2026': '\news6.jpeg', // Международное соглашение
+    'graduates-2026': '/news1.jpeg', // Выпускники — 2026
+    'vacancy-fair-2026': '/news2.jpeg', // Ярмарка вакансий
+    'regional-vacancies': '/news3.jpeg', // Региональная ярмарка
+    'qs-stars-2026': '/news4.jpeg', // QS Stars
+    'summer-school-2026': '/news5.jpeg', // Летняя школа
+    'international-agreement-2026': '/news6.jpeg', // Международное соглашение
   },
 
   // Раздел "Спорт" на главной — по id
