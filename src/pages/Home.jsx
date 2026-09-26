@@ -135,7 +135,7 @@ export default function Home() {
           className="w-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/40">
+        <div className="absolute inset-0 flex items-center justify-center bg-[rgba(119,219,31,0)] transition-colors group-hover:bg-[rgba(119,219,31,0.5)]">
           <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-2xl font-bold leading-none text-ink opacity-0 transition group-hover:opacity-100">
             +
           </span>
