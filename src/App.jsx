@@ -25,7 +25,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/page/:key" element={<ContentPage />} />
-          <Route path="/certificate/:id" element={<Certificate />} />
+          <Route path="/certificate" element={<Certificate />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

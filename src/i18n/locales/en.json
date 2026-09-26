@@ -209,6 +209,7 @@
     "backHome": "Back to home"
   },
   "certificate": {
+    "title": "Certificate",
     "download": "Download PDF"
   }
 }
