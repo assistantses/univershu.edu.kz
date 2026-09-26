@@ -25,13 +25,15 @@ export default function ImageSlideshow({ images, prevLabel = 'Previous', nextLab
           </svg>
         </button>
 
-        <div className="flex-1 overflow-hidden">
-          <img
-            src={images[index]}
-            alt=""
-            loading="lazy"
-            className="mx-auto max-h-[560px] w-auto max-w-full object-contain shadow-card"
-          />
+        <div className="relative h-[360px] flex-1 overflow-hidden sm:h-[480px] lg:h-[560px]">
+          {images.map((src, i) => (
+            <div
+              key={src}
+              className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ${i === index ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+            >
+              <img src={src} alt="" loading="lazy" className="max-h-full max-w-full object-contain shadow-card" />
+            </div>
+          ))}
         </div>
 
         <button

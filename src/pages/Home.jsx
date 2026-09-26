@@ -259,9 +259,9 @@ export default function Home() {
 
       {/* ABOUT */}
       <section className="bg-white pt-16">
-        <div className="container-c max-w-3xl">
-          <h2 className="section-title mb-4">{t('home.aboutTitle')}</h2>
-          <p className="text-muted">
+        <div className="container-c max-w-3xl text-center">
+          <h2 className="text-3xl font-extrabold text-ink sm:text-4xl">{t('home.aboutTitle')}</h2>
+          <p className="mt-6 text-lg text-muted">
             {t('home.aboutText', { name: brand.name, founded: brand.founded })}
           </p>
         </div>
@@ -276,7 +276,7 @@ export default function Home() {
             { v: brand.stats.faculties, l: t('home.facultiesLabel') },
           ].map((x) => (
             <div key={x.l} className="text-center">
-              <div className="text-xs font-bold uppercase tracking-widest text-muted">{x.l}</div>
+              <div className="text-lg text-ink">{x.l}</div>
               <div className="mt-2 text-4xl font-extrabold text-ink">{x.v}</div>
             </div>
           ))}
