@@ -240,8 +240,8 @@ export default function Home() {
           <h2 className="section-title mb-10 text-center">{t('home.partnersTitle')}</h2>
           <Carousel prevLabel={t('home.prevSlide')} nextLabel={t('home.nextSlide')}>
             {partners.map((p, i) => (
-              <div key={p.id} className="flex h-24 w-40 shrink-0 items-center justify-center bg-white p-6 grayscale transition hover:grayscale-0">
-                <img src={p.logo} alt={`${t('home.partnerAlt')} ${i + 1}`} className="max-h-12 max-w-full object-contain" loading="lazy" />
+              <div key={p.id} className="flex h-32 w-48 shrink-0 items-center justify-center grayscale transition hover:grayscale-0">
+                <img src={p.logo} alt={`${t('home.partnerAlt')} ${i + 1}`} className="max-h-24 max-w-full object-contain" loading="lazy" />
               </div>
             ))}
           </Carousel>

@@ -1,5 +1,22 @@
 import { useRef } from 'react'
 
+// Плавная прокрутка с управляемой длительностью — нативный
+// `scrollBy({ behavior: 'smooth' })` слишком быстрый и не даёт
+// настроить скорость, поэтому анимируем вручную через rAF.
+function animateScrollBy(el, delta, duration) {
+  const start = el.scrollLeft
+  const startTime = performance.now()
+  const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2)
+
+  function step(now) {
+    const elapsed = now - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    el.scrollLeft = start + delta * easeInOutQuad(progress)
+    if (progress < 1) requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
+}
+
 // Горизонтальная лента с кнопками "‹ ›" по бокам — переиспользуется для
 // партнёров и галереи достижений на главной странице.
 export default function Carousel({ children, prevLabel = 'Previous', nextLabel = 'Next' }) {
@@ -8,7 +25,7 @@ export default function Carousel({ children, prevLabel = 'Previous', nextLabel =
   const scroll = (dir) => {
     const track = trackRef.current
     if (!track) return
-    track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: 'smooth' })
+    animateScrollBy(track, dir * track.clientWidth * 0.6, 1400)
   }
 
   return (
@@ -25,7 +42,7 @@ export default function Carousel({ children, prevLabel = 'Previous', nextLabel =
 
       <div
         ref={trackRef}
-        className="flex flex-1 gap-6 overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex flex-1 gap-6 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {children}
       </div>

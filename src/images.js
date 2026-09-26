@@ -51,7 +51,7 @@ export const images = {
   announcements: {
     a1: '/notific1.jpeg',
     a2: '/notific2.jpeg',
-    a3: '/notific1.jpeg',
+    a3: '/notific2.jpeg',
   },
 
   // Логотипы партнёров на главной — 11 штук
