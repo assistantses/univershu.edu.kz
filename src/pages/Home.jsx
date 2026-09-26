@@ -260,8 +260,8 @@ export default function Home() {
       {/* ABOUT */}
       <section className="bg-white pt-16">
         <div className="container-c max-w-3xl text-center">
-          <h2 className="text-3xl font-extrabold text-ink sm:text-4xl">{t('home.aboutTitle')}</h2>
-          <p className="mt-6 text-lg text-muted">
+          <h2 className="text-4xl font-extrabold text-ink sm:text-5xl">{t('home.aboutTitle')}</h2>
+          <p className="mt-6 text-xl text-muted">
             {t('home.aboutText', { name: brand.name, founded: brand.founded })}
           </p>
         </div>

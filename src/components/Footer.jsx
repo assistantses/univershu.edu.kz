@@ -10,8 +10,8 @@ export default function Footer() {
     <footer className="mt-20 bg-night text-white/70">
       <div className="container-c grid grid-cols-1 gap-10 py-14 md:grid-cols-3">
         <div>
-          <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">{t('footer.contactsTitle')}</h4>
-          <div className="space-y-2 text-sm leading-relaxed">
+          <h4 className="mb-4 text-base font-bold uppercase tracking-wider text-white">{t('footer.contactsTitle')}</h4>
+          <div className="space-y-2 text-base leading-relaxed">
             <p>{t('common.city')}, {t('common.district')}, {t('common.address')}</p>
             <a href={`tel:${brand.phoneRaw}`} className="block hover:text-white">{brand.phone}</a>
             <a href={`mailto:${brand.email}`} className="block hover:text-white">{brand.email}</a>
@@ -19,8 +19,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">{t('footer.usefulLinksTitle')}</h4>
-          <ul className="space-y-2 text-sm">
+          <h4 className="mb-4 text-base font-bold uppercase tracking-wider text-white">{t('footer.usefulLinksTitle')}</h4>
+          <ul className="space-y-2 text-base">
             {usefulLinks.map((l) => (
               <li key={l}>
                 <a href="#" className="hover:text-white">{l}</a>
@@ -30,8 +30,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">{t('footer.directionsTitle')}</h4>
-          <div className="h-40 overflow-hidden border border-white/10">
+          <h4 className="mb-4 text-base font-bold uppercase tracking-wider text-white">{t('footer.directionsTitle')}</h4>
+          <div className="h-64 overflow-hidden border border-white/10">
             <iframe
               src="https://yandex.ru/map-widget/v1/?ll=69.699032%2C42.352552&z=17&pt=69.699032%2C42.352552%2Cpm2rdm"
               title={t('footer.directionsTitle')}
