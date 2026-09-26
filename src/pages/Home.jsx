@@ -49,6 +49,7 @@ function Hero() {
         <div key={i} className={`absolute inset-0 transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}>
           <div className="absolute inset-0"
                style={{ backgroundImage: `url(${s.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(21, 20, 22, 0.45)' }} />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
         </div>
       ))}
