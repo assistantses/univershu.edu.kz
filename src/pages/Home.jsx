@@ -181,12 +181,7 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {announcements.map((a) => {
               const l = localize(a, lang)
-              return (
-                <a key={a.id} href="#" className="block bg-white p-6 shadow-card transition hover:shadow-card-hover">
-                  <div className="text-xs text-muted">{fmt(a.date, lang)}</div>
-                  <div className="mt-2 font-bold text-ink">{l.title}</div>
-                </a>
-              )
+              return <Card key={a.id} to="/news" image={a.image} title={l.title} subtitle={fmt(a.date, lang)} />
             })}
           </div>
           <div className="mt-10 text-center">

@@ -39,12 +39,19 @@ export const images = {
 
   // Раздел "Спорт" на главной — по id
   sports: {
-    s1: 'https://picsum.photos/seed/aqu-sport1/400/300', // Футзал
-    s2: 'https://picsum.photos/seed/aqu-sport2/400/300', // Вольная борьба
-    s3: 'https://picsum.photos/seed/aqu-sport3/400/300', // Универсиада
-    s4: 'https://picsum.photos/seed/aqu-sport4/400/300', // Шахматы
-    s5: 'https://picsum.photos/seed/aqu-sport5/400/300', // Лёгкая атлетика
-    s6: 'https://picsum.photos/seed/aqu-sport6/400/300', // Волейбол
+    s1: '/sport1.jpeg', // Футзал
+    s2: '/sport2.jpg', // Вольная борьба
+    s3: '/sport3.jpg', // Универсиада
+    s4: '/sport4.jpeg', // Шахматы
+    s5: '/sport5.jpeg', // Лёгкая атлетика
+    s6: '/sport6.png', // Волейбол
+  },
+
+  // Раздел "Объявления" на главной — по id
+  announcements: {
+    a1: 'https://picsum.photos/seed/aqu-ann1/600/400',
+    a2: 'https://picsum.photos/seed/aqu-ann2/600/400',
+    a3: 'https://picsum.photos/seed/aqu-ann3/600/400',
   },
 
   // Логотипы партнёров на главной — 12 штук, i = 1..12

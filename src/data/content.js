@@ -225,6 +225,7 @@ export const announcements = [
   {
     id: 'a1',
     date: '2026-09-05',
+    image: images.announcements.a1,
     kk: { title: 'ПОҚ бос лауазымдарына конкурс туралы хабарландыру' },
     ru: { title: 'Объявление о конкурсе на замещение вакантных должностей ППС' },
     en: { title: 'Announcement: competition for vacant faculty positions' },
@@ -232,6 +233,7 @@ export const announcements = [
   {
     id: 'a2',
     date: '2026-09-03',
+    image: images.announcements.a2,
     kk: { title: 'Оқытушылардың біліктілігін арттыру бағдарламасы (күз ағыны)' },
     ru: { title: 'Программа повышения квалификации преподавателей (осенний поток)' },
     en: { title: 'Faculty professional development program (autumn intake)' },
@@ -239,6 +241,7 @@ export const announcements = [
   {
     id: 'a3',
     date: '2026-09-01',
+    image: images.announcements.a3,
     kk: { title: 'Білім беру гранттарына құжат қабылдау 20 қыркүйекке дейін ұзартылды' },
     ru: { title: 'Приём документов на образовательные гранты продлён до 20 сентября' },
     en: { title: 'Application deadline for education grants extended to September 20' },
