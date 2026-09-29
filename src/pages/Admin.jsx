@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 
 // Панель мониторинга безопасности.
 // Обращается к защищённому Spring Boot API (/api/admin/**) с HTTP Basic.
@@ -61,6 +61,24 @@ export default function Admin() {
     if (!g.resolved) return '…'
     return [g.city, g.country].filter(Boolean).join(', ') || '—'
   }
+
+  // Группируем журнал по IP — один посетитель может прислать десятки запросов
+  // (например, сама эта страница опрашивает /api/admin/* каждые несколько секунд),
+  // поэтому в таблице показываем одну строку на IP с общим числом его запросов.
+  const grouped = useMemo(() => {
+    const byIp = new Map()
+    for (const e of logs) {
+      let g = byIp.get(e.ip)
+      if (!g) {
+        g = { ip: e.ip, count: 0, threats: 0, last: e }
+        byIp.set(e.ip, g)
+      }
+      g.count += 1
+      if (e.threat) g.threats += 1
+      if (e.timestamp > g.last.timestamp) g.last = e
+    }
+    return [...byIp.values()].sort((a, b) => b.last.timestamp - a.last.timestamp)
+  }, [logs])
 
   useEffect(() => {
     if (auth) load(auth)
@@ -158,31 +176,33 @@ export default function Admin() {
         <table className="min-w-full text-sm">
           <thead className="bg-brand-50 text-left text-xs uppercase tracking-wide text-muted">
             <tr>
-              <th className="px-4 py-3">Время</th>
+              <th className="px-4 py-3">Последний запрос</th>
               <th className="px-4 py-3">IP</th>
               <th className="px-4 py-3">Откуда</th>
+              <th className="px-4 py-3">Запросов</th>
               <th className="px-4 py-3">Метод</th>
               <th className="px-4 py-3">Путь</th>
               <th className="px-4 py-3">Статус</th>
-              <th className="px-4 py-3">Угроза</th>
+              <th className="px-4 py-3">Угроз</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-brand-100">
-            {logs.length === 0 && (
-              <tr><td colSpan="7" className="px-4 py-10 text-center text-muted">Записей нет</td></tr>
+            {grouped.length === 0 && (
+              <tr><td colSpan="8" className="px-4 py-10 text-center text-muted">Записей нет</td></tr>
             )}
-            {logs.map((e, i) => (
-              <tr key={i} className={e.threat ? 'bg-red-50/40' : ''}>
-                <td className="whitespace-nowrap px-4 py-2 text-muted">{new Date(e.timestamp).toLocaleTimeString('ru-RU')}</td>
-                <td className="whitespace-nowrap px-4 py-2 font-mono text-xs">{e.ip}</td>
-                <td className="whitespace-nowrap px-4 py-2 text-xs text-muted">{locationOf(e.ip)}</td>
-                <td className="px-4 py-2 font-semibold">{e.method}</td>
-                <td className="max-w-xs truncate px-4 py-2 font-mono text-xs" title={e.path}>{e.path}</td>
-                <td className="px-4 py-2">{e.status}</td>
+            {grouped.map((g) => (
+              <tr key={g.ip} className={g.threats > 0 ? 'bg-red-50/40' : ''}>
+                <td className="whitespace-nowrap px-4 py-2 text-muted">{new Date(g.last.timestamp).toLocaleTimeString('ru-RU')}</td>
+                <td className="whitespace-nowrap px-4 py-2 font-mono text-xs">{g.ip}</td>
+                <td className="whitespace-nowrap px-4 py-2 text-xs text-muted">{locationOf(g.ip)}</td>
+                <td className="px-4 py-2 font-bold text-brand">{g.count}</td>
+                <td className="px-4 py-2 font-semibold">{g.last.method}</td>
+                <td className="max-w-xs truncate px-4 py-2 font-mono text-xs" title={g.last.path}>{g.last.path}</td>
+                <td className="px-4 py-2">{g.last.status}</td>
                 <td className="px-4 py-2">
-                  {e.threat ? (
-                    <span className={`rounded px-2 py-0.5 text-xs font-bold ${sevColor[e.threatType] || 'bg-red-100 text-red-700'}`}>
-                      {e.threatType}
+                  {g.threats > 0 ? (
+                    <span className={`rounded px-2 py-0.5 text-xs font-bold ${sevColor[g.last.threatType] || 'bg-red-100 text-red-700'}`}>
+                      {g.threats}× {g.last.threatType}
                     </span>
                   ) : <span className="text-brand-100">—</span>}
                 </td>
