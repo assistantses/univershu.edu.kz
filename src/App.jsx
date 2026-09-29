@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
@@ -13,6 +14,13 @@ import Certificate from './pages/Certificate.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 export default function App() {
+  useEffect(() => {
+    // Статические страницы отдаёт nginx напрямую, backend их не видит —
+    // без этого пинга обычный посетитель сайта вообще не попадал бы в
+    // журнал панели мониторинга (там были видны только запросы к /api/*).
+    fetch('/api/health').catch(() => {})
+  }, [])
+
   return (
     <div className="flex min-h-screen flex-col">
       <ScrollToTop />
