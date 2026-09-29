@@ -62,6 +62,13 @@ export default function Admin() {
     return [g.city, g.country].filter(Boolean).join(', ') || '—'
   }
 
+  // Провайдер/организация IP — часто виден хостинг или VPN, через который сканируют сайт.
+  const ispOf = (ip) => {
+    const g = geo[ip]
+    if (!g || g.local || !g.resolved) return ''
+    return g.isp || g.org || ''
+  }
+
   // Группируем журнал по IP — один посетитель может прислать десятки запросов
   // (например, сама эта страница опрашивает /api/admin/* каждые несколько секунд),
   // поэтому в таблице показываем одну строку на IP с общим числом его запросов.
@@ -194,7 +201,10 @@ export default function Admin() {
               <tr key={g.ip} className={g.threats > 0 ? 'bg-red-50/40' : ''}>
                 <td className="whitespace-nowrap px-4 py-2 text-muted">{new Date(g.last.timestamp).toLocaleTimeString('ru-RU')}</td>
                 <td className="whitespace-nowrap px-4 py-2 font-mono text-xs">{g.ip}</td>
-                <td className="whitespace-nowrap px-4 py-2 text-xs text-muted">{locationOf(g.ip)}</td>
+                <td className="whitespace-nowrap px-4 py-2 text-xs text-muted">
+                  {locationOf(g.ip)}
+                  {ispOf(g.ip) && <span className="block text-[11px] text-brand-100">{ispOf(g.ip)}</span>}
+                </td>
                 <td className="px-4 py-2 font-bold text-brand">{g.count}</td>
                 <td className="px-4 py-2 font-semibold">{g.last.method}</td>
                 <td className="max-w-xs truncate px-4 py-2 font-mono text-xs" title={g.last.path}>{g.last.path}</td>
