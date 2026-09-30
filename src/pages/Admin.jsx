@@ -31,21 +31,24 @@ export default function Admin() {
 
   const [stats, setStats] = useState(null)
   const [logs, setLogs] = useState([])
+  const [certAccess, setCertAccess] = useState([])
   const [geo, setGeo] = useState({})
-  const [filter, setFilter] = useState('all') // all | security
+  const [filter, setFilter] = useState('all') // all | security | certificate
   const [auto, setAuto] = useState(true)
   const timer = useRef(null)
 
   const load = useCallback(async (a = auth) => {
     try {
-      const [s, l, g] = await Promise.all([
+      const [s, l, c, g] = await Promise.all([
         api('/api/admin/stats', a),
-        api(`/api/admin/logs?type=${filter}&limit=200`, a),
+        api(`/api/admin/logs?type=${filter === 'certificate' ? 'all' : filter}&limit=200`, a),
+        api('/api/admin/certificate-access?limit=200', a),
         api('/api/admin/geo', a),
       ])
       if (s.status === 401 || l.status === 401) { setAuthed(false); setError('Неверный логин или пароль'); return }
       setStats(await s.json())
       setLogs(await l.json())
+      setCertAccess(await c.json())
       setGeo(await g.json())
       setAuthed(true)
       setError('')
@@ -86,6 +89,23 @@ export default function Admin() {
     }
     return [...byIp.values()].sort((a, b) => b.last.timestamp - a.last.timestamp)
   }, [logs])
+
+  // То же группирование по IP, но для попыток ввода кода на /archive/{hash}/{certId} —
+  // показывается на отдельной вкладке "Выбранные".
+  const groupedCertAccess = useMemo(() => {
+    const byIp = new Map()
+    for (const e of certAccess) {
+      let g = byIp.get(e.ip)
+      if (!g) {
+        g = { ip: e.ip, count: 0, successes: 0, last: e }
+        byIp.set(e.ip, g)
+      }
+      g.count += 1
+      if (e.success) g.successes += 1
+      if (e.timestamp > g.last.timestamp) g.last = e
+    }
+    return [...byIp.values()].sort((a, b) => b.last.timestamp - a.last.timestamp)
+  }, [certAccess])
 
   useEffect(() => {
     if (auth) load(auth)
@@ -170,7 +190,7 @@ export default function Admin() {
 
       {/* Filter */}
       <div className="mb-4 flex gap-2">
-        {[['all', 'Все запросы'], ['security', 'Только угрозы']].map(([k, label]) => (
+        {[['all', 'Все запросы'], ['security', 'Только угрозы'], ['certificate', 'Выбранные']].map(([k, label]) => (
           <button key={k} onClick={() => setFilter(k)}
                   className={`rounded-lg px-4 py-2 text-sm font-semibold ${filter === k ? 'bg-brand text-white' : 'bg-brand-50 text-brand'}`}>
             {label}
@@ -178,53 +198,102 @@ export default function Admin() {
         ))}
       </div>
 
-      {/* Log table */}
-      <div className="overflow-x-auto rounded-xl border border-brand-100 bg-white shadow-card">
-        <table className="min-w-full text-sm">
-          <thead className="bg-brand-50 text-left text-xs uppercase tracking-wide text-muted">
-            <tr>
-              <th className="px-4 py-3">Последний запрос</th>
-              <th className="px-4 py-3">IP</th>
-              <th className="px-4 py-3">Откуда</th>
-              <th className="px-4 py-3">Запросов</th>
-              <th className="px-4 py-3">Метод</th>
-              <th className="px-4 py-3">Путь</th>
-              <th className="px-4 py-3">Статус</th>
-              <th className="px-4 py-3">Угроз</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-brand-100">
-            {grouped.length === 0 && (
-              <tr><td colSpan="8" className="px-4 py-10 text-center text-muted">Записей нет</td></tr>
-            )}
-            {grouped.map((g) => (
-              <tr key={g.ip} className={g.threats > 0 ? 'bg-red-50/40' : ''}>
-                <td className="whitespace-nowrap px-4 py-2 text-muted">{new Date(g.last.timestamp).toLocaleTimeString('ru-RU')}</td>
-                <td className="whitespace-nowrap px-4 py-2 font-mono text-xs">{g.ip}</td>
-                <td className="whitespace-nowrap px-4 py-2 text-xs text-muted">
-                  {locationOf(g.ip)}
-                  {ispOf(g.ip) && <span className="block text-[11px] text-brand-100">{ispOf(g.ip)}</span>}
-                </td>
-                <td className="px-4 py-2 font-bold text-brand">{g.count}</td>
-                <td className="px-4 py-2 font-semibold">{g.last.method}</td>
-                <td className="max-w-xs truncate px-4 py-2 font-mono text-xs" title={g.last.path}>{g.last.path}</td>
-                <td className="px-4 py-2">{g.last.status}</td>
-                <td className="px-4 py-2">
-                  {g.threats > 0 ? (
-                    <span className={`rounded px-2 py-0.5 text-xs font-bold ${sevColor[g.last.threatType] || 'bg-red-100 text-red-700'}`}>
-                      {g.threats}× {g.last.threatType}
-                    </span>
-                  ) : <span className="text-brand-100">—</span>}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-3 text-xs text-muted">
-        Это защитный мониторинг вашего собственного сайта: запись IP-адресов, обнаружение
-        подозрительных запросов и блокировка при превышении лимита.
-      </p>
+      {filter === 'certificate' ? (
+        <>
+          {/* Certificate access table */}
+          <div className="overflow-x-auto rounded-xl border border-brand-100 bg-white shadow-card">
+            <table className="min-w-full text-sm">
+              <thead className="bg-brand-50 text-left text-xs uppercase tracking-wide text-muted">
+                <tr>
+                  <th className="px-4 py-3">Последняя попытка</th>
+                  <th className="px-4 py-3">IP</th>
+                  <th className="px-4 py-3">Откуда</th>
+                  <th className="px-4 py-3">Попыток</th>
+                  <th className="px-4 py-3">Сертификат</th>
+                  <th className="px-4 py-3">Код</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-brand-100">
+                {groupedCertAccess.length === 0 && (
+                  <tr><td colSpan="6" className="px-4 py-10 text-center text-muted">Записей нет</td></tr>
+                )}
+                {groupedCertAccess.map((g) => (
+                  <tr key={g.ip} className={g.successes === 0 ? 'bg-red-50/40' : ''}>
+                    <td className="whitespace-nowrap px-4 py-2 text-muted">{new Date(g.last.timestamp).toLocaleTimeString('ru-RU')}</td>
+                    <td className="whitespace-nowrap px-4 py-2 font-mono text-xs">{g.ip}</td>
+                    <td className="whitespace-nowrap px-4 py-2 text-xs text-muted">
+                      {locationOf(g.ip)}
+                      {ispOf(g.ip) && <span className="block text-[11px] text-brand-100">{ispOf(g.ip)}</span>}
+                    </td>
+                    <td className="px-4 py-2 font-bold text-brand">{g.count} <span className="font-normal text-muted">({g.successes} верных)</span></td>
+                    <td className="px-4 py-2 font-mono text-xs">{g.last.certId}</td>
+                    <td className="px-4 py-2">
+                      {g.last.success ? (
+                        <span className="rounded bg-green-100 px-2 py-0.5 text-xs font-bold text-green-700">верный</span>
+                      ) : (
+                        <span className="rounded bg-red-100 px-2 py-0.5 text-xs font-bold text-red-700">неверный</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-xs text-muted">
+            IP-адреса, вводившие код подтверждения на странице сертификата (/archive/…).
+          </p>
+        </>
+      ) : (
+        <>
+          {/* Log table */}
+          <div className="overflow-x-auto rounded-xl border border-brand-100 bg-white shadow-card">
+            <table className="min-w-full text-sm">
+              <thead className="bg-brand-50 text-left text-xs uppercase tracking-wide text-muted">
+                <tr>
+                  <th className="px-4 py-3">Последний запрос</th>
+                  <th className="px-4 py-3">IP</th>
+                  <th className="px-4 py-3">Откуда</th>
+                  <th className="px-4 py-3">Запросов</th>
+                  <th className="px-4 py-3">Метод</th>
+                  <th className="px-4 py-3">Путь</th>
+                  <th className="px-4 py-3">Статус</th>
+                  <th className="px-4 py-3">Угроз</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-brand-100">
+                {grouped.length === 0 && (
+                  <tr><td colSpan="8" className="px-4 py-10 text-center text-muted">Записей нет</td></tr>
+                )}
+                {grouped.map((g) => (
+                  <tr key={g.ip} className={g.threats > 0 ? 'bg-red-50/40' : ''}>
+                    <td className="whitespace-nowrap px-4 py-2 text-muted">{new Date(g.last.timestamp).toLocaleTimeString('ru-RU')}</td>
+                    <td className="whitespace-nowrap px-4 py-2 font-mono text-xs">{g.ip}</td>
+                    <td className="whitespace-nowrap px-4 py-2 text-xs text-muted">
+                      {locationOf(g.ip)}
+                      {ispOf(g.ip) && <span className="block text-[11px] text-brand-100">{ispOf(g.ip)}</span>}
+                    </td>
+                    <td className="px-4 py-2 font-bold text-brand">{g.count}</td>
+                    <td className="px-4 py-2 font-semibold">{g.last.method}</td>
+                    <td className="max-w-xs truncate px-4 py-2 font-mono text-xs" title={g.last.path}>{g.last.path}</td>
+                    <td className="px-4 py-2">{g.last.status}</td>
+                    <td className="px-4 py-2">
+                      {g.threats > 0 ? (
+                        <span className={`rounded px-2 py-0.5 text-xs font-bold ${sevColor[g.last.threatType] || 'bg-red-100 text-red-700'}`}>
+                          {g.threats}× {g.last.threatType}
+                        </span>
+                      ) : <span className="text-brand-100">—</span>}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-xs text-muted">
+            Это защитный мониторинг вашего собственного сайта: запись IP-адресов, обнаружение
+            подозрительных запросов и блокировка при превышении лимита.
+          </p>
+        </>
+      )}
     </div>
   )
 }

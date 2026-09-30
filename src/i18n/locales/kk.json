@@ -210,6 +210,11 @@
   },
   "certificate": {
     "title": "Сертификат",
-    "download": "PDF жүктеу"
+    "download": "PDF жүктеу",
+    "codeTitle": "Сертификатты растау",
+    "codePrompt": "Сертификатта көрсетілген кодты енгізіңіз.",
+    "codePlaceholder": "Код",
+    "codeSubmit": "Көрсету",
+    "codeError": "Код дұрыс емес. Қайталап көріңіз."
   }
 }

@@ -210,6 +210,11 @@
   },
   "certificate": {
     "title": "Certificate",
-    "download": "Download PDF"
+    "download": "Download PDF",
+    "codeTitle": "Certificate verification",
+    "codePrompt": "Enter the code printed on the certificate to view it.",
+    "codePlaceholder": "Code",
+    "codeSubmit": "Show",
+    "codeError": "Incorrect code. Please try again."
   }
 }

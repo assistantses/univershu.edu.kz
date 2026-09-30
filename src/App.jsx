@@ -11,6 +11,7 @@ import Contacts from './pages/Contacts.jsx'
 import Admin from './pages/Admin.jsx'
 import ContentPage from './pages/ContentPage.jsx'
 import Certificate from './pages/Certificate.jsx'
+import CertificateArchive from './pages/CertificateArchive.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/page/:key" element={<ContentPage />} />
           <Route path="/certificate" element={<Certificate />} />
+          <Route path="/archive/:hash/:certId" element={<CertificateArchive />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
