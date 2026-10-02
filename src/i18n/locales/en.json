@@ -145,7 +145,15 @@
     "pageTitle": "About the university",
     "historyKicker": "History",
     "historyTitle": "Our path since {{founded}}",
-    "historyText": "{{name}} is a fictional university template created to demonstrate the structure of a modern university website. Over {{years}} years of notional history, the university has grown to {{students}} students and {{bachelor}} bachelor's programs.",
+    "historyText": [
+      "Founded in {{founded}}, {{name}} positions itself as one of the region's major multidisciplinary universities, training specialists in higher and postgraduate education across {{bachelor}} bachelor's programs and 9 master's programs.",
+      "The university is built on a classical educational model that integrates teaching, character-building, and research processes. This approach has allowed the university to maintain its standing in academic circles through a qualified faculty and the introduction of innovative programs.",
+      "Over {{years}} years of activity in higher and postgraduate education, the university has built a strong teaching-and-laboratory and material-technical base along with well-developed infrastructure.",
+      "52% of the university's faculty hold academic degrees and titles, including representatives of employers and practitioners from production enterprises.",
+      "The university operates two research institutes — Ecology and Biology, and Pedagogy and Psychology — which also cover biotechnology, chemical technology, and petrochemistry.",
+      "The university cooperates with 43 foreign universities under memoranda of understanding, supporting student academic mobility and joint research initiatives.",
+      "Over the course of its work, the university has graduated more than 50,000 specialists who now work successfully in Kazakhstan and internationally."
+    ],
     "missionKicker": "Mission",
     "missionTitle": "Mission and values",
     "missionText": "Training specialists who are competitive in today's labor market and distinguished by intellect, high culture, and tolerance.",
@@ -159,33 +167,45 @@
     "teamKicker": "Team",
     "leadershipTitle": "Leadership",
     "leadership": [
-      { "name": "Rector", "role": "University leadership" },
-      { "name": "Vice-Rector for Academic Affairs", "role": "Academic policy" },
-      { "name": "Vice-Rector for Science", "role": "Research activity" }
+      { "name": "Seitkulov Nurlybek Akynovich", "role": "Rector" },
+      { "name": "Kerimbekova Akbope Aitkulovna", "role": "Vice-Rector for Academic Affairs and Strategic Development" },
+      { "name": "Akshatayeva Zhanna Baibekkyzy", "role": "Vice-Rector for Research and International Relations" },
+      { "name": "Turar Beibit Inkaruly", "role": "Vice-Rector for Digitalization" },
+      { "name": "Ospanova Gulmara Karakhanovna", "role": "Vice-Rector for Social and Educational Work" }
     ],
     "campusKicker": "Campus",
     "dormTitle": "Student residence",
-    "dormText": "{{name}} students have access to a student residence with 180 beds. The residence offers comfortable conditions: a dining hall, shower rooms, a laundry, a study area, and free Wi-Fi. Places are allocated on a contractual basis at the start of the academic year — the university's student affairs office handles move-in matters.",
+    "dormText": [
+      "{{name}} students have access to accommodation in the student residence (dormitory), which has 210 places. The residence offers comfortable conditions: dining halls and shower rooms are available, along with a laundry, a study room, and free Wi-Fi.",
+      "In addition to the main student residence, further places are available on a contractual basis: 200 places in the Sayram district residence and 150 places in the «Turan» residence.",
+      "Places in the residence are allocated on a competitive basis by a specially formed commission, whose work is overseen by the vice-rector for social and educational affairs."
+    ],
     "accessibilityKicker": "Accessibility",
     "inclusiveTitle": "Inclusive education",
-    "inclusiveText": "{{name}} creates a comfortable, barrier-free environment for students with special educational needs. Our goal is to help every student realize their potential and succeed in their studies.",
+    "inclusiveText": [
+      "{{name}} adapts its learning and teaching conditions to the needs of students with special educational needs (SEN) — students with limited abilities related to health status, as well as socioeconomic background, gender, language of instruction (including international students), and other factors.",
+      "The university's goal is to create a comfortable environment for students with SEN and support them in overcoming difficulties, developing their abilities, and achieving success in their studies and lives."
+    ],
     "inclusiveItems": [
-      "A barrier-free environment: ramps, accessible entrances, tactile guides",
-      "Individual and adapted study plans",
+      "A barrier-free environment: ramps, elevators, accessible entrances, tactile guides",
+      "Individual and adapted study plans, with consultations arranged as needed",
       "Psychological support and counseling",
-      "An accessible site version for the visually impaired and sign-language interpretation"
+      "Special software and assistive technology for learning",
+      "An accessible site version for the visually impaired and sign-language interpretation",
+      "Special classes to increase physical activity",
+      "Open access to the inclusive education strategy and regulations, methodological recommendations, and the equality, diversity, and inclusion policy"
     ],
     "docsKicker": "Documents",
     "licensesTitle": "Licenses and accreditations",
-    "licenseItems": ["State license", "Accreditation of educational programs", "QS Stars — 3 stars"]
+    "licenseItems": ["State license", "Accreditation of educational programs", "QS Stars — 3 stars", "Perpetual license AB No. 0137423 issued 03.02.2010 by the Ministry of Science and Higher Education of the RK", "IQAA institutional accreditation through 2029"]
   },
   "contacts": {
     "pageTitle": "Contacts",
     "contactUs": "Get in touch",
     "addressLabel": "Address",
-    "phoneLabel": "Phone",
-    "emailLabel": "E-mail",
-    "instagramLabel": "Instagram",
+    "emailInfoLabel": "General inquiries",
+    "emailAdmissionLabel": "Admissions office",
+    "emailComplianceLabel": "Anti-corruption service",
     "mapAlt": "Map",
     "admissionTitle": "For applicants",
     "admissionPeriod": "Admissions: June 20 through August 25",
@@ -193,6 +213,7 @@
     "formTitle": "Contact form",
     "thankYou": "Thank you! Your message has been sent (demo — no data is actually sent anywhere).",
     "nameLabel": "Name",
+    "emailLabel": "E-mail",
     "messageLabel": "Message",
     "submit": "Send"
   },
@@ -216,5 +237,34 @@
     "codePlaceholder": "Code",
     "codeSubmit": "Show",
     "codeError": "Incorrect code. Please try again."
+  },
+  "programsPage": {
+    "intro": "Our university offers the opportunity to get a quality education that meets today's requirements.",
+    "bachelorTitle": "Bachelor's Degree",
+    "bachelorDesc": "The first step toward higher education. Students gain deep knowledge in their field and become professionals.",
+    "masterTitle": "Master's Degree",
+    "masterDesc": "A stage of research inquiry and professional growth. A program for future leaders and researchers.",
+    "choose": "Choose"
+  },
+  "aiSanaPage": {
+    "stagePrepTitle": "Preparatory Stage",
+    "stagePrepDesc": "foundational AI courses on Coursera, Huawei and Astana Hub",
+    "stagePrepCount": "650,000 students",
+    "stage1Title": "Stage 1",
+    "stage1Desc": "entrepreneurial skills, programming, machine learning",
+    "stage1Count": "100,000 students",
+    "stage2Title": "Stage 2",
+    "stage2Desc": "project structuring and scaling strategy",
+    "stage2Count": "60,000 students",
+    "stage3Title": "Stage 3",
+    "stage3Desc": "pre-acceleration, acceleration and post-acceleration of startups",
+    "stage3Count": "1,500 MVP startups",
+    "statUniversities": "universities nationwide have already introduced AI disciplines",
+    "statAnchor": "\"anchor\" universities selected across the country's regions"
+  },
+  "sdgPage": {
+    "policy": "Policy",
+    "plans": "Plans",
+    "goal": "Goal {{n}}"
   }
 }

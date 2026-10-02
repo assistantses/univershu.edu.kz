@@ -12,6 +12,16 @@ export default function About() {
   const licenseItems = t('about.licenseItems', { returnObjects: true })
   const visionText = t('about.visionText', { name: brand.name, returnObjects: true })
   const inclusiveItems = t('about.inclusiveItems', { returnObjects: true })
+  const historyText = t('about.historyText', {
+    name: brand.name,
+    founded: brand.founded,
+    years: brand.stats.years,
+    students: brand.stats.students,
+    bachelor: brand.stats.bachelor,
+    returnObjects: true,
+  })
+  const dormText = t('about.dormText', { name: brand.name, returnObjects: true })
+  const inclusiveText = t('about.inclusiveText', { name: brand.name, returnObjects: true })
 
   return (
     <>
@@ -20,14 +30,9 @@ export default function About() {
       <section id="history" className="container-c py-12">
         <span className="kicker">{t('about.historyKicker')}</span>
         <h2 className="section-title mt-1 mb-4">{t('about.historyTitle', { founded: brand.founded })}</h2>
-        <p className="max-w-3xl text-muted">
-          {t('about.historyText', {
-            name: brand.name,
-            years: brand.stats.years,
-            students: brand.stats.students,
-            bachelor: brand.stats.bachelor,
-          })}
-        </p>
+        <div className="max-w-3xl space-y-4 text-lg leading-relaxed text-muted">
+          {historyText.map((p, i) => <p key={i}>{p}</p>)}
+        </div>
       </section>
 
       <section id="mission" className="bg-brand-50 py-12">
@@ -35,7 +40,7 @@ export default function About() {
           <div>
             <span className="kicker">{t('about.missionKicker')}</span>
             <h2 className="section-title mt-1 mb-4">{t('about.missionTitle')}</h2>
-            <p className="text-muted">{t('about.missionText')}</p>
+            <p className="text-lg leading-relaxed text-muted">{t('about.missionText')}</p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {values.map(([a, b]) => (
@@ -48,7 +53,7 @@ export default function About() {
         </div>
         <div className="container-c mt-10 max-w-3xl">
           <h3 className="text-xl font-extrabold text-ink">{t('about.visionTitle')}</h3>
-          <div className="mt-3 space-y-3 text-muted">
+          <div className="mt-3 space-y-4 text-lg leading-relaxed text-muted">
             {visionText.map((p, i) => <p key={i}>{p}</p>)}
           </div>
         </div>
@@ -57,13 +62,13 @@ export default function About() {
       <section id="leadership" className="container-c py-12">
         <span className="kicker">{t('about.teamKicker')}</span>
         <h2 className="section-title mt-1 mb-6">{t('about.leadershipTitle')}</h2>
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
           {leadership.map((l, i) => (
             <div key={l.name} className="overflow-hidden rounded-xl border border-brand-100 bg-white shadow-card">
-              <img src={leadershipImages[i]} alt={l.name} className="aspect-square w-full object-cover" />
+              <img src={leadershipImages[i]} alt={l.name} className="aspect-[3/4] w-full object-cover object-top" />
               <div className="p-4">
-                <div className="font-bold text-ink">{l.name}</div>
-                <div className="text-sm text-muted">{l.role}</div>
+                <div className="text-base font-bold text-ink">{l.name}</div>
+                <div className="mt-1 text-sm leading-snug text-muted">{l.role}</div>
               </div>
             </div>
           ))}
@@ -73,18 +78,22 @@ export default function About() {
       <section id="dorm" className="container-c py-12">
         <span className="kicker">{t('about.campusKicker')}</span>
         <h2 className="section-title mt-1 mb-4">{t('about.dormTitle')}</h2>
-        <p className="max-w-3xl text-muted">{t('about.dormText', { name: brand.name })}</p>
+        <div className="max-w-3xl space-y-4 text-lg leading-relaxed text-muted">
+          {dormText.map((p, i) => <p key={i}>{p}</p>)}
+        </div>
       </section>
 
       <section id="inclusive" className="bg-brand-50 py-12">
         <div className="container-c">
           <span className="kicker">{t('about.accessibilityKicker')}</span>
           <h2 className="section-title mt-1 mb-4">{t('about.inclusiveTitle')}</h2>
-          <p className="max-w-3xl text-muted">{t('about.inclusiveText', { name: brand.name })}</p>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="max-w-3xl space-y-4 text-lg leading-relaxed text-muted">
+            {inclusiveText.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
             {inclusiveItems.map((item) => (
-              <li key={item} className="flex gap-2 text-sm text-ink">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+              <li key={item} className="flex gap-2.5 text-base leading-relaxed text-ink">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
                 <span>{item}</span>
               </li>
             ))}

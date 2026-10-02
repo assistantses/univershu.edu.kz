@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import PageHeader from '../components/PageHeader.jsx'
-import { images } from '../images.js'
+import CertificatePages from '../components/CertificatePages.jsx'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
@@ -58,24 +58,7 @@ export default function CertificateArchive() {
             <button disabled={loading} className="btn-brand w-full">{t('certificate.codeSubmit')}</button>
           </form>
         ) : (
-          <>
-            <div className="mx-auto flex max-w-3xl flex-col gap-6">
-              <img
-                src={images.certificates.ser1}
-                alt={`${t('certificate.title')} — 1`}
-                className="w-full rounded-xl border border-brand-100 shadow-card"
-              />
-              <img
-                src={images.certificates.ser2}
-                alt={`${t('certificate.title')} — 2`}
-                className="w-full rounded-xl border border-brand-100 shadow-card"
-              />
-            </div>
-            <div className="mt-6 flex justify-center gap-4">
-              <a href={images.certificates.ser1} download className="btn-outline">{t('certificate.download')} 1</a>
-              <a href={images.certificates.ser2} download className="btn-outline">{t('certificate.download')} 2</a>
-            </div>
-          </>
+          <CertificatePages />
         )}
       </div>
     </>

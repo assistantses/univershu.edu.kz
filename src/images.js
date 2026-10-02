@@ -20,11 +20,13 @@ export const images = {
   // /contacts — фото карты/схемы проезда
   contactsMap: 'https://picsum.photos/seed/aqu-map/800/360',
 
-  // /about — Руководство (по порядку: Ректор, проректор по учебной работе, проректор по науке)
+  // /about — Руководство (по порядку: Ректор, проректор по академ. вопросам, проректор по науке, проректор по цифровизации, проректор по соц. работе)
   leadership: [
-    'https://picsum.photos/seed/aqu-l1/300/300',
-    'https://picsum.photos/seed/aqu-l2/300/300',
-    'https://picsum.photos/seed/aqu-l3/300/300',
+    '/leader-rector.png',
+    '/leader-vr-academic.jpg',
+    '/leader-vr-science.jpg',
+    '/leader-vr-digital.png',
+    '/leader-vr-social.jpg',
   ],
 
   // Новости (главная + /news + /news/:id) — по id новости
@@ -60,12 +62,91 @@ export const images = {
   // Галерея "Наши достижения" на главной — слайдер по одному изображению
   achievements: ['/a1.jpg', '/a2.jpg'],
 
-  // Страница /certificate (QR-код на бумажном сертификате ведёт сюда) —
-  // один сертификат из двух страниц-картинок (JPG, не PDF — без панели
-  // просмотрщика). Загрузите файлы ser1.jpg / ser2.jpg в папку public —
-  // заработает само; после получения домена так же можно заменить на финальные.
+  // Страницы /certificate и /archive/:hash/:certId (QR-код на бумажном
+  // транскрипте ведёт сюда) — транскрипт из двух страниц, показанных
+  // одна под другой. Показываем SVG, а не PDF: без панели просмотрщика
+  // и без потери резкости при зоуме.
+  //
+  // Наборов два, потому что внутри самого документа напечатан QR-код: в
+  // .com-наборе он ведёт на shymkentuniversity.com, в .kz-наборе — на
+  // shymkentuniversity.kz. На каждом домене показываем свой набор, чтобы
+  // QR на экране вёл на тот же сайт, что и открыт.
+  //
+  // Порядок в pages/pdf — как в документе: сначала титульная страница с
+  // 1-м семестром, потом 2-й семестр с GPA и QR-кодом. У .com-набора имена
+  // файлов относительно этого порядка перевёрнуты — так пришли исходники.
+  //
+  // SVG пересобираются из PDF командой `python tools/pdf-to-svg.py`.
   certificates: {
-    ser1: '/ser1.jpg',
-    ser2: '/ser2.jpg',
+    com: {
+      pages: ['/final.com2.svg', '/final.com.svg'],
+      pdf: ['/final.com2.pdf', '/final.com.pdf'],
+    },
+    kz: {
+      pages: ['/final.kz.svg', '/final.kz2.svg'],
+      pdf: ['/final.kz.pdf', '/final.kz2.pdf'],
+    },
   },
+
+  // /page/:key — фото руководителя подразделения/кафедры/факультета (если есть
+  // на сайте-образце). Ключ = тот же ключ раздела в pageContent.js. Если фото
+  // для ключа нет — карточка руководителя на странице просто не показывается.
+  staffPhotos: {
+    youthOrg: '/head-youthorg.png', // Студентам — председатель молодёжной организации (студенческий ректор)
+    anticorruptionService: '/head-anticorruptionservice.png', // Антикоррупционная служба — руководитель
+    academicCouncil: '/head-academiccouncil.png', // Учёный совет — учёный секретарь
+    rectorBlog: '/head-rectorblog.png', // Блог ректора — ректор
+    facultyScienceHum: '/head-facultyScienceHum.png', // Декан — Джанабаев Даурен Жумагалиевич
+    facultyPedagogy: '/head-facultyPedagogy.jpg', // Декан — Турабаева Лаззат Калыкуловна
+    chairNaturalSci: '/head-chairNaturalSci.png', // Зав. кафедрой — Тлегенова Кулайша Бейсенбаевна
+    chairMathIT: '/head-chairMathIT.png', // Зав. кафедрой — Медетбекова Рыскуль Ашималиевна
+    chairLawHistory: '/head-chairLawHistory.jpg', // Зав. кафедрой — Жарылкапова Гульзагира Парменбаевна
+    chairBusiness: '/head-chairBusiness.png', // Зав. кафедрой — Калыкулов Куатбек Мухтарбекович
+    chairPedagogy: '/head-chairPedagogy.png', // Зав. кафедрой — Ибрагим Кайрат Аменулы
+    chairPhysEd: '/head-chairPhysEd.jpg', // Зав. кафедрой — Рустемов Мажит Мусаевич
+    deptIntl: '/head-deptintl.jpg', // Директор департамента международного сотрудничества — Кобланова Онгаркуль Нурмухамедовна
+    deptScience: '/head-deptscience.jpeg', // Директор департамента науки — Жошибекова Багила Съезбаевна
+    careerCenter: '/head-careercenter.jpg', // Руководитель Центра профессиональной практики и карьеры — Кылышбаева Гульмира Дихановна
+    deptYouth: '/head-deptyouth.jpg', // Директор департамента молодёжной политики — Төлен Ерсултан Ермекулы
+    archive: '/head-archive.jpg', // Заведующая архивом — Жетписбаева Назгуль Абдыхановна
+    library: '/head-library.jpg', // Заведующая библиотекой — Раева Гульсим Аскаровна
+    deptMarketing: '/head-deptmarketing.jpeg', // Руководитель департамента маркетинга и связей с общественностью — Саипов Фархат Бахадырулы
+    deptInfrastructure: '/head-deptinfrastructure.png', // Руководитель департамента хозяйственной деятельности и развития инфраструктуры — Нуркин Мухтар Назарович
+    postgradCenter: '/head-postgradcenter.png', // Директор Центра послевузовского образования — Айтенова Динара Оразбаевна
+    medicalService: '/head-medicalservice.png', // Руководитель медицинской службы — Баимбетова Кулзахира Дармешевна
+    deptAcademic: '/head-deptacademic.jpg', // Директор департамента по академическим вопросам — Мамбетова Ляззат Маратовна
+    deptStrategic: '/head-deptstrategic.jpg', // Руководитель департамента стратегического развития и внутреннего обеспечения качества — Айдарова Амангул Амировна
+    deptQuality: '/head-deptquality.jpg', // Директор департамента по обеспечению академического качества образовательных программ — Кобланова Онгаркуль Нурмухамедовна
+    deptHR: '/head-depthr.png', // Руководитель департамента управления персоналом — Жумагулова Куралай Кадырбаевна
+    registrarOffice: '/head-registraroffice.png', // Руководитель офиса регистратора — Менликулова Адеми Бакытовна
+    studentCenter: '/head-studentcenter.png', // Руководитель центра обслуживания студентов — Бетиков Руслан Болатұлы
+    deptDigital: '/head-deptdigital.jpg', // Руководитель департамента цифровых технологий — Жаппар Алтынбек Мұхтарбекұлы
+    deptFinance: '/head-deptfinance.jpg', // Директор департамента, главный бухгалтер — Керимбекова Акерке Адиловна
+  },
+
+  // /page/aiAqu — реальные изображения со страницы-образца
+  aiSana: {
+    title: '/aisana-title.jpeg', // Титульный слайд программы «AI-SANA»
+    roadmap: '/aisana-roadmap.png', // Инфографика дорожной карты (4 этапа)
+    event: '/aisana-event1.jpeg', // Презентация ИИ-центра Alem.AI на AlmatyFinTechDays
+    classPhotos: ['/aisana-class1.jpeg', '/aisana-class2.jpeg', '/aisana-class3.jpeg'], // Презентация программы студентам университета
+  },
+
+  // /page/sdg — официальные иконки целей ООН (с сайта-образца)
+  sdgIcons: {
+    4: '/sdg-4.jpg',
+    5: '/sdg-5.jpg',
+    8: '/sdg-8.jpg',
+    15: '/sdg-15.jpg',
+    17: '/sdg-17.jpg',
+  },
+  sdgWheel: '/sdg-wheel.png',
+}
+
+// Набор страниц транскрипта для текущего домена: на shymkentuniversity.kz —
+// .kz-набор, на всех остальных адресах (shymkentuniversity.com, прямой IP,
+// локальная разработка) — .com-набор.
+export function certificateSet() {
+  const host = typeof window === 'undefined' ? '' : window.location.hostname
+  return host.endsWith('.kz') ? images.certificates.kz : images.certificates.com
 }

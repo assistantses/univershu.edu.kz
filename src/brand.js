@@ -7,10 +7,10 @@ export const brand = {
   nameShort: 'SHU',
   nameRu: 'Шымкентский университет',
   founded: 2001,
-  phone: '8 (7252) 55-58-61',
-  phoneRaw: '+77252555861',
-  email: 'shu2050@mail.ru',
-  instagram: 'shymkent.university',
+  // Единые адреса почты по назначению (без телефона и Instagram — по решению университета).
+  emailInfo: 'info@shymkentuniversity.com',
+  emailAdmission: 'admission@shymkentuniversity.com',
+  emailCompliance: 'compliance@shymkentuniversity.com',
   stats: {
     students: '7 000+',
     bachelor: 29,

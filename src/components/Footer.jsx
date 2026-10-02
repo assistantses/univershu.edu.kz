@@ -13,8 +13,9 @@ export default function Footer() {
           <h4 className="mb-4 text-base font-bold uppercase tracking-wider text-white">{t('footer.contactsTitle')}</h4>
           <div className="space-y-2 text-base leading-relaxed">
             <p>{t('common.city')}, {t('common.district')}, {t('common.address')}</p>
-            <a href={`tel:${brand.phoneRaw}`} className="block hover:text-white">{brand.phone}</a>
-            <a href={`mailto:${brand.email}`} className="block hover:text-white">{brand.email}</a>
+            <a href={`mailto:${brand.emailInfo}`} className="block hover:text-white">{brand.emailInfo}</a>
+            <a href={`mailto:${brand.emailAdmission}`} className="block hover:text-white">{brand.emailAdmission}</a>
+            <a href={`mailto:${brand.emailCompliance}`} className="block hover:text-white">{brand.emailCompliance}</a>
           </div>
         </div>
 

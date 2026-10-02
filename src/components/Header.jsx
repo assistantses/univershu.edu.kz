@@ -174,26 +174,26 @@ export default function Header() {
           ))}
 
           <div className="space-y-2 px-5 py-4 text-sm">
-            <a href={`tel:${brand.phoneRaw}`} className="flex items-center gap-2 text-ink hover:text-brand">
-              <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z" />
-              </svg>
-              {brand.phone}
-            </a>
-            <a href={`mailto:${brand.email}`} className="flex items-center gap-2 text-ink hover:text-brand">
+            <a href={`mailto:${brand.emailInfo}`} className="flex items-center gap-2 text-ink hover:text-brand">
               <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <path d="M3 7l9 6 9-6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              {brand.email}
+              {brand.emailInfo}
             </a>
-            <a href="#" className="flex items-center gap-2 text-ink hover:text-brand">
+            <a href={`mailto:${brand.emailAdmission}`} className="flex items-center gap-2 text-ink hover:text-brand">
               <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              {brand.instagram}
+              {brand.emailAdmission}
+            </a>
+            <a href={`mailto:${brand.emailCompliance}`} className="flex items-center gap-2 text-ink hover:text-brand">
+              <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {brand.emailCompliance}
             </a>
           </div>
         </nav>

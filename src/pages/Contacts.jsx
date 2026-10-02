@@ -20,16 +20,16 @@ export default function Contacts() {
               <dd className="text-muted">{t('common.city')}, {t('common.district')}, {t('common.address')}</dd>
             </div>
             <div>
-              <dt className="font-bold text-brand">{t('contacts.phoneLabel')}</dt>
-              <dd><a href={`tel:${brand.phoneRaw}`} className="text-muted hover:text-brand">{brand.phone}</a></dd>
+              <dt className="font-bold text-brand">{t('contacts.emailInfoLabel')}</dt>
+              <dd><a href={`mailto:${brand.emailInfo}`} className="text-muted hover:text-brand">{brand.emailInfo}</a></dd>
             </div>
             <div>
-              <dt className="font-bold text-brand">{t('contacts.emailLabel')}</dt>
-              <dd><a href={`mailto:${brand.email}`} className="text-muted hover:text-brand">{brand.email}</a></dd>
+              <dt className="font-bold text-brand">{t('contacts.emailAdmissionLabel')}</dt>
+              <dd><a href={`mailto:${brand.emailAdmission}`} className="text-muted hover:text-brand">{brand.emailAdmission}</a></dd>
             </div>
             <div>
-              <dt className="font-bold text-brand">{t('contacts.instagramLabel')}</dt>
-              <dd className="text-muted">{brand.instagram}</dd>
+              <dt className="font-bold text-brand">{t('contacts.emailComplianceLabel')}</dt>
+              <dd><a href={`mailto:${brand.emailCompliance}`} className="text-muted hover:text-brand">{brand.emailCompliance}</a></dd>
             </div>
           </dl>
           <div className="mt-6 overflow-hidden rounded-xl border border-brand-100">
