@@ -148,7 +148,6 @@ export default function Admin() {
           <input type="password" value={pass} onChange={(e) => setPass(e.target.value)}
                  className="mb-6 w-full rounded-lg border border-brand-100 px-4 py-2.5 outline-none focus:border-brand" />
           <button className="btn-brand w-full">Войти</button>
-          <p className="mt-4 text-center text-xs text-muted">По умолчанию: admin / changeme123</p>
         </form>
       </div>
     )
