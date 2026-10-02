@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { brand } from '../brand.js'
 
@@ -45,9 +44,8 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-c flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/50 sm:flex-row">
+        <div className="container-c py-5 text-center text-xs text-white/50">
           <p>{t('footer.copyright', { name: brand.name })}</p>
-          <Link to="/admin" className="hover:text-white">{t('footer.monitoring')}</Link>
         </div>
       </div>
     </footer>

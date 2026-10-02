@@ -42,7 +42,7 @@ export default function App() {
           <Route path="/page/:key" element={<ContentPage />} />
           <Route path="/certificate" element={<Certificate />} />
           <Route path="/archive/:hash/:certId" element={<CertificateArchive />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/univeradminpanel" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
