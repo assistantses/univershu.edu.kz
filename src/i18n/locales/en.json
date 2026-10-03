@@ -3,7 +3,9 @@
     "tagline": "Knowledge. Integrity. Future.",
     "city": "Shymkent",
     "district": "Karatau district, Tassay subdistrict",
-    "address": "Zhibek Zholy Street, land plot No6, index 160031"
+    "address": "Zhibek Zholy Street, land plot No. 6",
+    "indexLabel": "Index",
+    "index": "160031"
   },
   "header": {
     "searchPlaceholder": "Search",

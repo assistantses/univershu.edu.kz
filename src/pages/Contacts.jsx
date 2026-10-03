@@ -17,7 +17,12 @@ export default function Contacts() {
           <dl className="space-y-4 text-sm">
             <div>
               <dt className="font-bold text-brand">{t('contacts.addressLabel')}</dt>
-              <dd className="text-muted">{t('common.city')}, {t('common.district')}, {t('common.address')}</dd>
+              <dd className="text-muted">
+                {t('common.city')},<br />
+                {t('common.district')},<br />
+                {t('common.address')}<br />
+                {t('common.indexLabel')}: {t('common.index')}
+              </dd>
             </div>
             <div>
               <dt className="font-bold text-brand">{t('contacts.emailInfoLabel')}</dt>

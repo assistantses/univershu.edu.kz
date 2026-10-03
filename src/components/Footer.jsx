@@ -11,7 +11,12 @@ export default function Footer() {
         <div>
           <h4 className="mb-4 text-base font-bold uppercase tracking-wider text-white">{t('footer.contactsTitle')}</h4>
           <div className="space-y-2 text-base leading-relaxed">
-            <p>{t('common.city')}, {t('common.district')}, {t('common.address')}</p>
+            <p>
+              {t('common.city')},<br />
+              {t('common.district')},<br />
+              {t('common.address')}<br />
+              {t('common.indexLabel')}: {t('common.index')}
+            </p>
             <a href={`mailto:${brand.emailInfo}`} className="block hover:text-white">{brand.emailInfo}</a>
             <a href={`mailto:${brand.emailAdmission}`} className="block hover:text-white">{brand.emailAdmission}</a>
             <a href={`mailto:${brand.emailCompliance}`} className="block hover:text-white">{brand.emailCompliance}</a>
