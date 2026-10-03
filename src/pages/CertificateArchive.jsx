@@ -14,7 +14,9 @@ export default function CertificateArchive() {
   const { hash, certId } = useParams()
   const { t } = useTranslation()
   const [code, setCode] = useState('')
-  const [unlocked, setUnlocked] = useState(false)
+  // Адреса страниц и PDF: приходят с бэкенда вместе с пропуском,
+  // пока кода нет — показываем только форму ввода.
+  const [doc, setDoc] = useState(null)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -29,7 +31,7 @@ export default function CertificateArchive() {
         body: JSON.stringify({ certId, code }),
       })
       const data = await res.json()
-      if (data.valid) setUnlocked(true)
+      if (data.valid) setDoc({ pages: data.pages, pdf: data.pdf })
       else setError(t('certificate.codeError'))
     } catch {
       setError(t('certificate.codeError'))
@@ -42,7 +44,7 @@ export default function CertificateArchive() {
     <>
       <PageHeader title={t('certificate.title')} crumbs={[t('certificate.title')]} />
       <div className="container-c py-12">
-        {!unlocked ? (
+        {!doc ? (
           <form onSubmit={submit} className="mx-auto w-full max-w-sm rounded-2xl border border-brand-100 bg-white p-8 shadow-card">
             <h1 className="mb-1 text-xl font-extrabold text-brand">{t('certificate.codeTitle')}</h1>
             <p className="mb-6 text-sm text-muted">{t('certificate.codePrompt')}</p>
@@ -58,7 +60,7 @@ export default function CertificateArchive() {
             <button disabled={loading} className="btn-brand w-full">{t('certificate.codeSubmit')}</button>
           </form>
         ) : (
-          <CertificatePages />
+          <CertificatePages pages={doc.pages} pdf={doc.pdf} />
         )}
       </div>
     </>

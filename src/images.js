@@ -62,31 +62,9 @@ export const images = {
   // Галерея "Наши достижения" на главной — слайдер по одному изображению
   achievements: ['/a1.jpg', '/a2.jpg'],
 
-  // Страницы /certificate и /archive/:hash/:certId (QR-код на бумажном
-  // транскрипте ведёт сюда) — транскрипт из двух страниц, показанных
-  // одна под другой. Показываем SVG, а не PDF: без панели просмотрщика
-  // и без потери резкости при зоуме.
-  //
-  // Наборов два, потому что внутри самого документа напечатан QR-код: в
-  // .com-наборе он ведёт на shymkentuniversity.com, в .kz-наборе — на
-  // shymkentuniversity.kz. На каждом домене показываем свой набор, чтобы
-  // QR на экране вёл на тот же сайт, что и открыт.
-  //
-  // Порядок в pages/pdf — как в документе: сначала титульная страница с
-  // 1-м семестром, потом 2-й семестр с GPA и QR-кодом. У .com-набора имена
-  // файлов относительно этого порядка перевёрнуты — так пришли исходники.
-  //
-  // SVG пересобираются из PDF командой `python tools/pdf-to-svg.py`.
-  certificates: {
-    com: {
-      pages: ['/final.com2.svg', '/final.com.svg'],
-      pdf: ['/final.com2.pdf', '/final.com.pdf'],
-    },
-    kz: {
-      pages: ['/final.kz.svg', '/final.kz2.svg'],
-      pdf: ['/final.kz.pdf', '/final.kz2.pdf'],
-    },
-  },
+  // Страниц транскрипта (/archive/:hash/:certId) здесь нет: они не статика,
+  // а лежат в бэкенде и отдаются только после ввода верного кода — см.
+  // CertificateController. Адреса страниц приходят в ответе на verify.
 
   // /page/:key — фото руководителя подразделения/кафедры/факультета (если есть
   // на сайте-образце). Ключ = тот же ключ раздела в pageContent.js. Если фото
@@ -141,12 +119,4 @@ export const images = {
     17: '/sdg-17.jpg',
   },
   sdgWheel: '/sdg-wheel.png',
-}
-
-// Набор страниц транскрипта для текущего домена: на shymkentuniversity.kz —
-// .kz-набор, на всех остальных адресах (shymkentuniversity.com, прямой IP,
-// локальная разработка) — .com-набор.
-export function certificateSet() {
-  const host = typeof window === 'undefined' ? '' : window.location.hostname
-  return host.endsWith('.kz') ? images.certificates.kz : images.certificates.com
 }

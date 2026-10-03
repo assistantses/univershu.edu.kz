@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import PageHeader from '../components/PageHeader.jsx'
-import CertificatePages from '../components/CertificatePages.jsx'
 
-// Страница подтверждения сертификата — QR-код на бумажном оригинале
-// ведёт сюда. Транскрипт состоит из двух страниц, показанных друг под другом.
+// Публичного предпросмотра здесь нет: транскрипт открывается только
+// по ссылке из QR-кода (/archive/:hash/:certId) и после ввода кода.
 export default function Certificate() {
   const { t } = useTranslation()
 
@@ -11,7 +10,7 @@ export default function Certificate() {
     <>
       <PageHeader title={t('certificate.title')} crumbs={[t('certificate.title')]} />
       <div className="container-c py-12">
-        <CertificatePages />
+        <p className="mx-auto max-w-lg text-center text-muted">{t('certificate.codePrompt')}</p>
       </div>
     </>
   )
