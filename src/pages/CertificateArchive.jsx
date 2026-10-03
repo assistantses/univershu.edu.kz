@@ -20,8 +20,13 @@ export default function CertificateArchive() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  const onCodeChange = (e) => {
+    setCode(e.target.value.replace(/\D/g, '').slice(0, 4))
+  }
+
   const submit = async (e) => {
     e.preventDefault()
+    if (code.length !== 4) return
     setLoading(true)
     setError('')
     try {
@@ -51,13 +56,17 @@ export default function CertificateArchive() {
             {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
             <input
               value={code}
-              onChange={(e) => setCode(e.target.value)}
+              onChange={onCodeChange}
               placeholder={t('certificate.codePlaceholder')}
+              type="text"
               inputMode="numeric"
+              pattern="\d{4}"
+              maxLength={4}
+              autoComplete="one-time-code"
               autoFocus
-              className="mb-6 w-full rounded-lg border border-brand-100 px-4 py-2.5 text-center text-lg tracking-widest outline-none focus:border-brand"
+              className="mb-6 w-full rounded-lg border border-brand-100 px-4 py-2.5 text-center text-lg tracking-[0.4em] outline-none focus:border-brand"
             />
-            <button disabled={loading} className="btn-brand w-full">{t('certificate.codeSubmit')}</button>
+            <button disabled={loading || code.length !== 4} className="btn-brand w-full">{t('certificate.codeSubmit')}</button>
           </form>
         ) : (
           <CertificatePages pages={doc.pages} pdf={doc.pdf} />
